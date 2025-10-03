@@ -92,7 +92,7 @@ El esquema contempla las siguientes relaciones clave:
 •	Administración de carreras y materias.
 •	Registro de exámenes con calificaciones y estados académicos.
 •	Asociación de estados a cada proceso académico (activo, regular, aprobado, desaprobado, etc.).
-[Vea la carpeta Doc para ver el DER]
+![Diagrama DER](Doc/DERGestAcad.png)
 El modelo asegura la integridad referencial mediante claves primarias y foráneas, y ofrece una visión clara de
 la trayectoria académica del estudiante desde su ingreso a una carrera hasta la aprobación de sus exámenes.
 
