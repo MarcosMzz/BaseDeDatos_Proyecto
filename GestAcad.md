@@ -63,7 +63,7 @@ ________________________________________
 El proyecto se limita al modelado y puesta en marcha de una base de datos enfocada en los alumnos.
 No incluye otros módulos administrativos ni de gestión institucional, centrándose únicamente en el núcleo académico: carreras, materias, comisiones, exámenes y estados asociados al alumno.
 ________________________________________
-### CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
+## CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
 Marco conceptual
 Este proyecto responde a la necesidad de organizar y centralizar la información académica de los alumnos, asegurando procesos más claros y eficientes en las instituciones educativas.
 La base de datos busca:
