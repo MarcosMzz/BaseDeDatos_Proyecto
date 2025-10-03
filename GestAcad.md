@@ -1,15 +1,20 @@
-Universidad Nacional del Nordeste
+# **Sistema de Gestión Académica**
+**GestAcad**
 
-Licenciatura en sistemas e información
+**Universidad Nacional del Nordeste**
 
-Bases de Datos 1
+**Licenciatura en sistemas e información**
 
-Sistema de Gestión Académica
-GestAcad
+**Bases de Datos 1**
 
-Profesor: Carlos Villegas
+**Sistema de Gestión Académica**
+**GestAcad**
 
-Grupo número 38:
+**Profesores**: Darío Villegas, Juan Jose Cuzziol, Walter Vallejos, Numa Badaracco.
+
+**Grupo: 38**
+
+**Integrantes**
 - Bazzola Gabriel Esteban
 - Rojas Yaccuzzi Joaquin
 - Zambrano Franco
