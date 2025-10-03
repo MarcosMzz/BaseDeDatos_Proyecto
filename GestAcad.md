@@ -45,13 +45,17 @@
 El proyecto aborda el diseño e implementación de una base de datos académica denominada gestAcad, orientada a centralizar la información vinculada a los alumnos de una institución educativa.
 El foco está en organizar y digitalizar los procesos relacionados con inscripciones a carreras, materias, comisiones y exámenes, así como el registro de calificaciones y estados académicos.
 ________________________________________
-### Planteamiento del problema
-Actualmente, la gestión académica suele realizarse en sistemas poco integrados o incluso en registros físicos, lo que provoca:
-•	Dificultades para mantener un historial confiable de inscripciones y calificaciones.
-•	Errores o inconsistencias en la administración de materias, comisiones y exámenes.
-•	Información dispersa y propensa a pérdidas.
-•	Complejidad para obtener una visión clara del estado académico de los alumnos.
-Por lo tanto, surge la necesidad de contar con una base de datos centralizada que garantice un registro organizado, consistente y seguro de toda la trayectoria académica del estudiante.
+### Planteamiento del problema  
+
+Actualmente, la gestión académica suele realizarse en sistemas poco integrados o incluso en registros físicos, lo que provoca:  
+
+- Dificultades para mantener un historial confiable de inscripciones y calificaciones.  
+- Errores o inconsistencias en la administración de materias, comisiones y exámenes.  
+- Información dispersa y propensa a pérdidas.  
+- Complejidad para obtener una visión clara del estado académico de los alumnos.  
+
+Por lo tanto, surge la necesidad de contar con una base de datos centralizada que garantice un registro organizado, consistente y seguro de toda la trayectoria académica del estudiante.  
+
 ________________________________________
 ### Objetivo general  
 
