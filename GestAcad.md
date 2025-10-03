@@ -10,13 +10,13 @@ GestAcad
 Profesor: Carlos Villegas
 
 Grupo número 38:
--Mazzanti Marcos Santino
 - Bazzola Gabriel Esteban
 - Rojas Yaccuzzi Joaquin
 - Zambrano Franco
+- Mazzanti Marcos Santino
 
 Índice
-•	Capítulo I: Introducción
+•	[Capítulo I: Introducción](#capítulo-i:-introducción)
 o	Tema
 o	Planteamiento del problema
 o	Objetivo general
@@ -33,7 +33,7 @@ o	Diagrama de Entidad-Relación
 •	Capítulo VI: Bibliografía
  
 
-CAPÍTULO I: INTRODUCCIÓN
+## CAPÍTULO I: INTRODUCCIÓN
 Tema
 El proyecto aborda el diseño e implementación de una base de datos académica denominada gestAcad, orientada a centralizar la información vinculada a los alumnos de una institución educativa.
 El foco está en organizar y digitalizar los procesos relacionados con inscripciones a carreras, materias, comisiones y exámenes, así como el registro de calificaciones y estados académicos.
