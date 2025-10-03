@@ -15,25 +15,27 @@ Grupo número 38:
 - Zambrano Franco
 - Mazzanti Marcos Santino
 
-Índice
-•	[Capítulo I: Introducción](#capítulo-i:-introducción)
-o	Tema
-o	Planteamiento del problema
-o	Objetivo general
-o	Objetivos específicos
-o	Alcance
-•	Capítulo II: Marco conceptual o referencial
-•	Capítulo III: Metodología
-o	Descripción del proceso
-o	Herramientas utilizadas
-•	Capítulo IV: Desarrollo del tema / Resultados
-o	Modelo entidad-relación
-o	Diagrama de Entidad-Relación
-•	Capítulo V: Conclusiones
-•	Capítulo VI: Bibliografía
+# Índice
+
+1. [Capítulo I: Introducción](#capítulo-i-introducción)  
+   1.1. [Tema](#tema)  
+   1.2. [Planteamiento del problema](#planteamiento-del-problema)  
+   1.3. [Objetivo general](#objetivo-general)  
+   1.4. [Objetivos específicos](#objetivos-específicos)  
+   1.5. [Alcance](#alcance)  
+2. [Capítulo II: Marco conceptual o referencial](#capítulo-ii-marco-conceptual-o-referencial)  
+3. [Capítulo III: Metodología](#capítulo-iii-metodología)  
+   3.1. [Descripción del proceso](#descripción-del-proceso)  
+   3.2. [Herramientas utilizadas](#herramientas-utilizadas)  
+4. [Capítulo IV: Desarrollo del tema / Resultados](#capítulo-iv-desarrollo-del-tema--resultados)  
+   4.1. [Modelo entidad-relación](#modelo-entidad-relación)  
+   4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)  
+5. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)  
+6. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)  
+
  
 
-## CAPÍTULO I: INTRODUCCIÓN
+# CAPÍTULO I: INTRODUCCIÓN
 Tema
 El proyecto aborda el diseño e implementación de una base de datos académica denominada gestAcad, orientada a centralizar la información vinculada a los alumnos de una institución educativa.
 El foco está en organizar y digitalizar los procesos relacionados con inscripciones a carreras, materias, comisiones y exámenes, así como el registro de calificaciones y estados académicos.
