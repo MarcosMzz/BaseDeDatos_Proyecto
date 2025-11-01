@@ -1,3 +1,8 @@
+CREATE DATABASE gestAcad;
+GO
+USE gestAcad;
+GO
+
 CREATE TABLE alumnos
 (
   id_alumno INT IDENTITY(1,1) NOT NULL,
