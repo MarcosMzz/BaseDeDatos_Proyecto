@@ -15,7 +15,7 @@ CREATE TABLE alumnos
 CREATE TABLE estados
 (
   id_estado INT IDENTITY(1,1) NOT NULL,
-  descripcion VARCHAR(100) NOT NULL, -- CAMBIADO de INT a VARCHAR(100)
+  descripcion VARCHAR(100) NOT NULL,
   constraint pk_estados PRIMARY KEY (id_estado),
   constraint uq_descripcion UNIQUE (descripcion)
 );
@@ -23,8 +23,8 @@ CREATE TABLE estados
 CREATE TABLE Carrera
 (
   id_carrera INT IDENTITY(1,1) NOT NULL,
-  nombre_carrera VARCHAR(200) NOT NULL, -- CAMBIADO de INT a VARCHAR(200)
-  cant_materias INT NOT NULL, -- Mantenido como INT
+  nombre_carrera VARCHAR(200) NOT NULL,
+  cant_materias INT NOT NULL, 
   constraint pk_carrera PRIMARY KEY (id_carrera),
   constraint uq_nombre_carrera UNIQUE (nombre_carrera)
 );
@@ -45,7 +45,7 @@ CREATE TABLE Materia
 (
   id_materia INT IDENTITY(1,1) NOT NULL,
   nombre_materia VARCHAR(200) NOT NULL,
-  cuatrimestre VARCHAR(50) NOT NULL, -- CAMBIADO de VARCHAR(200) a VARCHAR(50)
+  cuatrimestre VARCHAR(50) NOT NULL,
   anio_cursada DATE NOT NULL,
   constraint pk_materia PRIMARY KEY (id_materia),
   constraint uq_nombre_materia UNIQUE (nombre_materia)
@@ -65,7 +65,7 @@ CREATE TABLE Examen
 (
   id_examen INT IDENTITY(1,1) NOT NULL,
   calificacion INT,
-  fecha DATE NOT NULL, -- CAMBIADO de INT a DATE
+  fecha DATE NOT NULL,
   id_materia INT NOT NULL,
   id_estado INT NOT NULL,
   constraint pk_examen PRIMARY KEY (id_examen),
