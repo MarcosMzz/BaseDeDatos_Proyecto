@@ -1,115 +1,115 @@
 CREATE TABLE alumnos
 (
-  id_alumno INT NOT NULL,
-  nombre VARCHAR(200) NOT NULL,
-  apellido VARCHAR(200) NOT NULL,
-  fecha_nacimiento DATE NOT NULL,
-  dni INT NOT NULL,
-  email VARCHAR(200) NOT NULL,
-  password VARCHAR(200) NOT NULL,
-  PRIMARY KEY (id_alumno),
-  UNIQUE (dni),
-  UNIQUE (email)
+  id_alumno INT IDENTITY(1,1) NOT NULL,
+  nombre VARCHAR(200) NOT NULL,
+  apellido VARCHAR(200) NOT NULL,
+  fecha_nacimiento DATE NOT NULL,
+  dni INT NOT NULL,
+  email VARCHAR(200) NOT NULL,
+  pass VARCHAR(200) NOT NULL,
+  constraint pk_alumno PRIMARY KEY (id_alumno),
+  constraint uq_dni UNIQUE (dni),
+  constraint uq_email UNIQUE (email)
 );
 
 CREATE TABLE estados
 (
-  id_estado INT NOT NULL,
-  descripcion INT NOT NULL,
-  PRIMARY KEY (id_estado),
-  UNIQUE (descripcion)
+  id_estado INT IDENTITY(1,1) NOT NULL,
+  descripcion VARCHAR(100) NOT NULL, -- CAMBIADO de INT a VARCHAR(100)
+  constraint pk_estados PRIMARY KEY (id_estado),
+  constraint uq_descripcion UNIQUE (descripcion)
 );
 
 CREATE TABLE Carrera
 (
-  id_carrera INT NOT NULL,
-  nombre_carrera INT NOT NULL,
-  cant_materias INT NOT NULL,
-  PRIMARY KEY (id_carrera),
-  UNIQUE (nombre_carrera)
+  id_carrera INT IDENTITY(1,1) NOT NULL,
+  nombre_carrera VARCHAR(200) NOT NULL, -- CAMBIADO de INT a VARCHAR(200)
+  cant_materias INT NOT NULL, -- Mantenido como INT
+  constraint pk_carrera PRIMARY KEY (id_carrera),
+  constraint uq_nombre_carrera UNIQUE (nombre_carrera)
 );
 
 CREATE TABLE inscripcion_carrera
 (
-  fecha_ins_carrera DATE NOT NULL,
-  id_estado INT NOT NULL,
-  id_alumno INT NOT NULL,
-  id_carrera INT NOT NULL,
-  PRIMARY KEY (id_alumno, id_carrera),
-  FOREIGN KEY (id_estado) REFERENCES estados(id_estado),
-  FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
-  FOREIGN KEY (id_carrera) REFERENCES Carrera(id_carrera)
+  fecha_ins_carrera DATE NOT NULL,
+  id_estado INT NOT NULL,
+  id_alumno INT NOT NULL,
+  id_carrera INT NOT NULL,
+  constraint pk_inscrpcion_carrera PRIMARY KEY (id_alumno, id_carrera),
+  constraint fk_inscrpcion_carrera_estados FOREIGN KEY (id_estado) REFERENCES estados(id_estado),
+  constraint fk_inscrpcion_carrera_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
+  constraint fk_inscrpcion_carrera_carrera FOREIGN KEY (id_carrera) REFERENCES Carrera(id_carrera)
 );
 
 CREATE TABLE Materia
 (
-  id_materia INT NOT NULL,
-  nombre_materia VARCHAR(200) NOT NULL,
-  cuatrimestre VARCHAR(200) NOT NULL,
-  anio_cursada DATE NOT NULL,
-  PRIMARY KEY (id_materia),
-  UNIQUE (nombre_materia)
+  id_materia INT IDENTITY(1,1) NOT NULL,
+  nombre_materia VARCHAR(200) NOT NULL,
+  cuatrimestre VARCHAR(50) NOT NULL, -- CAMBIADO de VARCHAR(200) a VARCHAR(50)
+  anio_cursada DATE NOT NULL,
+  constraint pk_materia PRIMARY KEY (id_materia),
+  constraint uq_nombre_materia UNIQUE (nombre_materia)
 );
 
 CREATE TABLE inscripcion_materia
 (
-  fecha_ins_materia DATE NOT NULL,
-  id_alumno INT NOT NULL,
-  id_materia INT NOT NULL,
-  PRIMARY KEY (id_alumno, id_materia),
-  FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
-  FOREIGN KEY (id_materia) REFERENCES Materia(id_materia)
+  fecha_ins_materia DATE NOT NULL,
+  id_alumno INT NOT NULL,
+  id_materia INT NOT NULL,
+  constraint pk_inscripcion_materia PRIMARY KEY (id_alumno, id_materia),
+  constraint fk_inscripcion_materia_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
+  constraint fk_inscripcion_materia_materia FOREIGN KEY (id_materia) REFERENCES Materia(id_materia)
 );
 
 CREATE TABLE Examen
 (
-  id_examen INT NOT NULL,
-  calificacion INT,
-  fecha INT NOT NULL,
-  id_materia INT NOT NULL,
-  id_estado INT NOT NULL,
-  PRIMARY KEY (id_examen),
-  FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
-  FOREIGN KEY (id_estado) REFERENCES estados(id_estado)
+  id_examen INT IDENTITY(1,1) NOT NULL,
+  calificacion INT,
+  fecha DATE NOT NULL, -- CAMBIADO de INT a DATE
+  id_materia INT NOT NULL,
+  id_estado INT NOT NULL,
+  constraint pk_examen PRIMARY KEY (id_examen),
+  constraint fk_examen_materia FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
+  constraint fk_examen_estados FOREIGN KEY (id_estado) REFERENCES estados(id_estado)
 );
 
 CREATE TABLE inscripcion_examen
 (
-  fecha_ins_examen DATE NOT NULL,
-  id_estado INT NOT NULL,
-  id_alumno INT NOT NULL,
-  id_examen INT NOT NULL,
-  PRIMARY KEY (id_alumno, id_examen),
-  FOREIGN KEY (id_estado) REFERENCES estados(id_estado),
-  FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
-  FOREIGN KEY (id_examen) REFERENCES Examen(id_examen)
+  fecha_ins_examen DATE NOT NULL,
+  id_estado INT NOT NULL,
+  id_alumno INT NOT NULL,
+  id_examen INT NOT NULL,
+  constraint pk_inscripcion_examen PRIMARY KEY (id_alumno, id_examen),
+  constraint fk_inscripcion_examen_estados FOREIGN KEY (id_estado) REFERENCES estados(id_estado),
+  constraint fk_inscripcion_examen_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
+  constraint fk_inscripcion_examen_examen FOREIGN KEY (id_examen) REFERENCES Examen(id_examen)
 );
 
 CREATE TABLE Comision
 (
-  id_comision INT NOT NULL,
-  cant_alumnos INT NOT NULL,
-  nro_comision INT NOT NULL,
-  id_materia INT NOT NULL,
-  PRIMARY KEY (id_comision),
-  FOREIGN KEY (id_materia) REFERENCES Materia(id_materia)
+  id_comision INT IDENTITY(1,1) NOT NULL,
+  cant_alumnos INT NOT NULL,
+  nro_comision INT NOT NULL,
+  id_materia INT NOT NULL,
+  constraint pk_comision PRIMARY KEY (id_comision),
+  constraint fk_comision_materia FOREIGN KEY (id_materia) REFERENCES Materia(id_materia)
 );
 
 CREATE TABLE inscripcion_comision
 (
-  fecha_ins_comision DATE NOT NULL,
-  id_alumno INT NOT NULL,
-  id_comision INT NOT NULL,
-  PRIMARY KEY (id_alumno, id_comision),
-  FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
-  FOREIGN KEY (id_comision) REFERENCES Comision(id_comision)
+  fecha_ins_comision DATE NOT NULL,
+  id_alumno INT NOT NULL,
+  id_comision INT NOT NULL,
+  constraint pk_inscripcion_comision PRIMARY KEY (id_alumno, id_comision),
+  constraint fk_inscripcion_comision_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
+  constraint fk_inscripcion_comision_comision FOREIGN KEY (id_comision) REFERENCES Comision(id_comision)
 );
 
 CREATE TABLE materia_carrera
 (
-  id_materia INT NOT NULL,
-  id_carrera INT NOT NULL,
-  PRIMARY KEY (id_materia, id_carrera),
-  FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
-  FOREIGN KEY (id_carrera) REFERENCES Carrera(id_carrera)
+  id_materia INT NOT NULL,
+  id_carrera INT NOT NULL,
+  constraint pk_materia_carrera PRIMARY KEY (id_materia, id_carrera),
+  constraint fk_materia_carrera_materia FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
+  constraint fk_materia_carrera_carrera FOREIGN KEY (id_carrera) REFERENCES Carrera(id_carrera)
 );
