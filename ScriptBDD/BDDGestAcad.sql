@@ -105,3 +105,13 @@ CREATE TABLE inscripcion_examen
   constraint fk_inscripcion_examen_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
   constraint fk_inscripcion_examen_examen FOREIGN KEY (id_examen) REFERENCES Examen(id_examen)
 );
+
+CREATE TABLE inscripcion_materia
+(
+  fecha_ins_materia DATE NOT NULL,
+  id_alumno INT NOT NULL,
+  id_materia INT NOT NULL,
+  constraint pk_inscripcion_materia PRIMARY KEY (id_alumno, id_materia),
+  constraint fk_inscripcion_materia_alumnos FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno),
+  constraint fk_inscripcion_materia_materia FOREIGN KEY (id_materia) REFERENCES Materia(id_materia)
+);
