@@ -108,7 +108,7 @@ El esquema contempla las siguientes relaciones clave:
 •	Registro de exámenes con calificaciones y estados académicos.
 •	Asociación de estados a cada proceso académico (activo, regular, aprobado, desaprobado, etc.).
 ### Diagrama de entidad-relación
-![Diagrama DER](Doc/DERGestAcad.png)
+![Diagrama DER](Doc/DERGestAcadNuevo.png)
 El modelo asegura la integridad referencial mediante claves primarias y foráneas, y ofrece una visión clara de
 la trayectoria académica del estudiante desde su ingreso a una carrera hasta la aprobación de sus exámenes.
 ________________________________________
