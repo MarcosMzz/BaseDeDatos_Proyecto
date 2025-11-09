@@ -34,7 +34,7 @@ GO
 
 /*-- Resultado esperado:
 -- "Cannot create more than one clustered index on table 'Examen'."
-Por eso creamos 'Examen_Prueba': sin PK ni IDENTITY.
+Por eso creamos 'Examen_Prueba': sin PK.
 */
 
 CREATE TABLE Examen_Prueba (
@@ -94,7 +94,7 @@ SELECT * FROM Examen_Prueba
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
-SELECT * FROM Examen
+SELECT fecha,id_materia FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
@@ -111,7 +111,7 @@ SELECT * FROM Examen_Prueba
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
-SELECT * FROM Examen
+SELECT fecha,id_materia FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
