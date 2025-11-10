@@ -129,7 +129,7 @@ PONER IMAGEN DE COMPARACION: ComparacionConsultaConClusteredGrafico
 Figura 2. Comparación del rendimiento tras aplicar un índice agrupado.
 La consulta se benefició del orden físico de la tabla, permitiendo un acceso secuencial eficiente mediante Index Seek. Se observó una notable disminución del tiempo de ejecución y del número de páginas leídas.
 
-![Diagrama DER](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConClusteredGrafico.png)
+![Comparación con índice agrupado](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConClusteredGrafico.png)
 
 ### Comparación con índice no agrupado
 
@@ -137,7 +137,7 @@ PONER IMAGEN DE COMPARACION: ComparacionConsultaConNonClusteredGrafico
 Figura 3. Comparación del rendimiento tras aplicar un índice no agrupado.
 El índice no agrupado mejoró la búsqueda sobre la columna fecha, reduciendo el tiempo respecto al heap inicial. Al incluir id_materia, la consulta pudo resolverse directamente desde el índice, evitando la necesidad de lecturas adicionales en la tabla base.
 
-![Diagrama DER](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConNonClusteredGrafico.png)
+![Comparación con índice no agrupado](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConNonClusteredGrafico.png)
 
 ### Comparación con índice no agrupado en ambas tablas
 
@@ -145,7 +145,7 @@ PONER IMAGEN DE COMPARACION: ComparacionConsultaConNonClusteredGraficoAmbasTabla
 Figura 4. Comparación del rendimiento con índices no agrupados aplicados a las dos tablas involucradas.
 Este escenario presentó el mejor resultado general, optimizando tanto la búsqueda principal como las uniones entre tablas. El plan de ejecución reflejó un acceso más eficiente y una reducción significativa en el costo total de la consulta.
 
-![Diagrama DER](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConNonClusteredGraficoAmbasTablas.png)
+![Comparación con índice no agrupado en ambas tablas](ScriptBDD/Tema2_OptimizacionPorIndiice/ComparacionConsultaConNonClusteredGraficoAmbasTablas.png)
 
 ## Evaluación de resultados
 
