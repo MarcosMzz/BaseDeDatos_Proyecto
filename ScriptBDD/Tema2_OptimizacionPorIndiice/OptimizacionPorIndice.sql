@@ -34,7 +34,7 @@ GO
 
 /*-- Resultado esperado:
 -- "Cannot create more than one clustered index on table 'Examen'."
-Por eso creamos 'Examen_Prueba': sin PK.
+Por eso creamos 'Examen_Prueba': sin PK ni IDENTITY.
 */
 
 CREATE TABLE Examen_Prueba (
@@ -94,7 +94,7 @@ SELECT * FROM Examen_Prueba
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
-SELECT fecha,id_materia FROM Examen
+SELECT * FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
@@ -134,7 +134,7 @@ GO
 
 -- Ejecutamos de nuevo la misma consulta
 
-SELECT * FROM Examen
+SELECT fecha,id_materia FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
@@ -142,16 +142,25 @@ SELECT * FROM Examen_Prueba
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
+
 -- También creamos uno similar en la tabla original (esto no da error
 -- porque ya tiene su índice agrupado por la PK).
 CREATE NONCLUSTERED INDEX idx_examen_fecha_noagrupado
-ON Examen(fecha);
+ON Examen(fecha)
+INCLUDE (id_materia);
 GO
 
 -- Ejecutamos de nuevo la misma consulta
 
-SELECT * FROM Examen
+SELECT fecha,id_materia FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
+GO
+
+SELECT * FROM Examen_Prueba 
+WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
+GO
+
+DROP INDEX idx_examen_fecha_noagrupado ON Examen;
 GO
 
 -- Borramos la tabla de prueba para dejar todo en su estado "original"
