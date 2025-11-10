@@ -15,12 +15,25 @@ GO
 
 /*
 No usamos directamente la tabla 'Examen' del proyecto porque:
-1. Esa tabla ya tiene una PRIMARY KEY sobre 'id_examen'.
-2. En SQL Server, la clave primaria genera automáticamente 
+1. En SQL Server, la clave primaria genera automáticamente 
    un índice agrupado (clustered index).
-3. Como solo puede existir un índice agrupado por tabla, 
-   no podríamos crear otro sobre la columna 'fecha'.
+2. Como solo puede existir un índice agrupado por tabla, 
+   no podemos crear otro índice agrupado sobre la columna 'fecha'.
 
+-- -----------------------------------------------------------------
+-- INTENTO FALLIDO: ÍNDICE AGRUPADO EN LA TABLA OFICIAL
+-- -----------------------------------------------------------------
+-- Este bloque es solo para demostrar lo que pasa si intentamos
+-- crear un índice agrupado sobre 'fecha' en la tabla original.
+-- SQL Server devuelve un error porque ya existe uno sobre 'id_examen'.
+*/
+
+CREATE CLUSTERED INDEX idx_examen_fecha_agrupado
+ON Examen(fecha);
+GO
+
+/*-- Resultado esperado:
+-- "Cannot create more than one clustered index on table 'Examen'."
 Por eso creamos 'Examen_Prueba': sin PK ni IDENTITY.
 */
 
@@ -31,12 +44,10 @@ CREATE TABLE Examen_Prueba (
 GO
 
 /*
-También creamos una vista para hacer las pruebas de carga masiva (BULK INSERT).
-La idea es que coincida con el orden de columnas del CSV 
-y evite errores por tipos de datos o columnas que no existen.
+Creamos una vista para hacer la carga masiva (BULK INSERT).
 */
 
-CREATE VIEW dbo.v_examen_oficial_bulk AS
+CREATE VIEW dbo.v_examen_bulk AS
 SELECT
     fecha,
     id_materia
@@ -44,7 +55,7 @@ FROM
     Examen;
 GO
 
---Cargamos el millon de registros
+-- Cargamos el millon de registros
 -- Cargamos el archivo CSV con las columnas (fecha, id_materia)
 -- en ambas tablas: la de prueba y la oficial.
 BULK INSERT dbo.Examen_Prueba
@@ -53,7 +64,8 @@ WITH (
     FIRSTROW = 2, 
     FIELDTERMINATOR = ',',
     ROWTERMINATOR = '\n',
-    TABLOCK
+    TABLOCK,
+    BATCHSIZE = 100000
 );
 GO
 
@@ -74,9 +86,9 @@ SET STATISTICS TIME ON;
 GO
 
 -- -----------------------------------------------------------------
--- PRUEBA 1: CONSULTA SIN ÍNDICE (HEAP SCAN)
+-- PRUEBA 1: CONSULTA SIN ÍNDICE
 -- -----------------------------------------------------------------
--- Como la tabla no tiene índices, el plan de ejecución debería mostrar 
+-- Como la tabla no tiene índices, el plan de ejecución va a mostrar 
 -- un “Table Scan”, es decir, lectura completa de la tabla.
 SELECT * FROM Examen_Prueba 
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
@@ -85,18 +97,6 @@ GO
 SELECT * FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
-
--- -----------------------------------------------------------------
--- INTENTO FALLIDO: ÍNDICE AGRUPADO EN LA TABLA OFICIAL
--- -----------------------------------------------------------------
--- Este bloque es solo para demostrar lo que pasa si intentamos
--- crear un índice agrupado sobre 'fecha' en la tabla original.
--- SQL Server devuelve un error porque ya existe uno sobre 'id_examen'.
-CREATE CLUSTERED INDEX idx_examen_fecha_agrupado
-ON Examen(fecha);
-GO
--- Resultado esperado:
--- "Cannot create more than one clustered index on table 'Examen'."
 
 -- -----------------------------------------------------------------
 -- PRUEBA 2: ÍNDICE AGRUPADO EN TABLA DE PRUEBA
@@ -111,6 +111,10 @@ SELECT * FROM Examen_Prueba
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
+SELECT fecha,id_materia FROM Examen
+WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
+GO
+
 --Borramos el indice agrupado
 
 DROP INDEX idx_pruebas_fecha_agrupado ON Examen_Prueba;
@@ -122,24 +126,41 @@ GO
 -- Ahora probamos con un índice no agrupado.
 -- Incluimos 'id_materia' para que sea un índice “cubierto”
 -- (la consulta puede resolverse solo con el índice).
+
 CREATE NONCLUSTERED INDEX idx_pruebas_fecha_noagrupado
 ON Examen_Prueba(fecha)
 INCLUDE (id_materia);
 GO
 
--- También creamos uno similar en la tabla original (esto no da error
--- porque ya tiene su índice agrupado por la PK).
-CREATE NONCLUSTERED INDEX idx_examen_fecha_noagrupado
-ON Examen(fecha);
+-- Ejecutamos de nuevo la misma consulta
+
+SELECT fecha,id_materia FROM Examen
+WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
--- Ejecutamos de nuevo la misma consulta
 SELECT * FROM Examen_Prueba 
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
 GO
 
-SELECT * FROM Examen
+
+-- También creamos uno similar en la tabla original (esto no da error
+-- porque ya tiene su índice agrupado por la PK).
+CREATE NONCLUSTERED INDEX idx_examen_fecha_noagrupado
+ON Examen(fecha)
+INCLUDE (id_materia);
+GO
+
+-- Ejecutamos de nuevo la misma consulta
+
+SELECT fecha,id_materia FROM Examen
 WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
+GO
+
+SELECT * FROM Examen_Prueba 
+WHERE fecha BETWEEN '2023-01-01' AND '2023-03-31';
+GO
+
+DROP INDEX idx_examen_fecha_noagrupado ON Examen;
 GO
 
 -- Borramos la tabla de prueba para dejar todo en su estado "original"
