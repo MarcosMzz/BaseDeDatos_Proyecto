@@ -1,6 +1,9 @@
 USE gestAcad;
 GO
-
+ DROP PROCEDURE spInsertar_Alumno;
+ DROP PROCEDURE spEliminar_Alumno;
+ DROP PROCEDURE spModificar_Alumno;
+GO
 ------ PROCEDIMIENTOS ALMACENADOS -------
 
 --INSERTAR
@@ -33,21 +36,21 @@ GO
 --ELIMINAR
 CREATE PROCEDURE spEliminar_Alumno
 (
-	@id INT
+	@dni INT
 ) 
 
 AS
 
 BEGIN
-	IF EXISTS (SELECT 1 FROM dbo.alumnos WHERE id_alumno = @id)
+	IF EXISTS (SELECT 1 FROM dbo.alumnos WHERE dni = @dni)
 	BEGIN
 		DELETE FROM dbo.alumnos 
-		WHERE id_alumno = @id 
+		WHERE dni = @dni 
 	END
 
 	ELSE	
 	BEGIN
-		PRINT 'no existe alumno con esa id'
+		PRINT 'no existe alumno con ese dni'
 	END
 END;
 GO
@@ -56,29 +59,30 @@ GO
 --MODIFICAR
 CREATE PROCEDURE spModificar_Alumno
 (
-	@id INT,
-	@nombre VARCHAR(200),
-	@apellido VARCHAR(200),
- 	@email VARCHAR(200),
- 	@pass VARCHAR(200)
+	@dni INT,
+	@nombre VARCHAR(200) = NULL,
+	@apellido VARCHAR(200) = NULL,
+ 	@email VARCHAR(200) = NULL,
+ 	@pass VARCHAR(200) = NULL
 )
 
 AS
 
 BEGIN
-	IF EXISTS (SELECT 1 FROM dbo.alumnos WHERE id_alumno = @id)
+	IF EXISTS (SELECT 1 FROM dbo.alumnos WHERE dni = @dni)
 	BEGIN
 		UPDATE dbo.alumnos
-		SET	nombre = @nombre,
-			apellido = @apellido,
-			email = @email,
-			pass = @pass
+		SET	
+			nombre = CASE WHEN @nombre IS NOT NULL THEN @nombre ELSE nombre END,
+			apellido = CASE WHEN @apellido IS NOT NULL THEN @apellido ELSE apellido END,
+			email = CASE WHEN @email IS NOT NULL THEN @email ELSE email END,
+			pass = CASE WHEN @pass IS NOT NULL THEN @pass ELSE pass END
 
-		WHERE id_alumno = @id 
+		WHERE dni = @dni 
 	END
 
 	ELSE	
 	BEGIN
-		PRINT 'no existe alumno con esa id'
+		PRINT 'no existe alumno con ese dni'
 	END
 END
