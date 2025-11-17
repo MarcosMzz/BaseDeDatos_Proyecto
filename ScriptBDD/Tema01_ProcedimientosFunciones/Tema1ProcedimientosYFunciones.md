@@ -127,11 +127,11 @@ Con el objetivo de comparar la eficiencia de los diferentes metodos
 Los resultados fueron:
 
 **Inserción Directa** 
-![alt text](image.png)
+![alt text](eficiencia_insercionDirecta.png)
 
 
 **Inserción Por Procedimiento**
-![alt text](image-1.png)
+![alt text](eficiencia_insercionProcedimiento.png)
 
 
 **Conclusión:**
