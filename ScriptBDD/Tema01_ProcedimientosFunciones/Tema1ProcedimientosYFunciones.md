@@ -59,6 +59,7 @@ Funciones: no pueden modificar datos; solo realizar cálculos o consultas.
 
 
 **Complejidad y propósito:**
+
 Procedimientos: se usan para tareas completas y lógicas de negocio.
 
 Funciones: se enfocan en cálculos o valores derivados.
