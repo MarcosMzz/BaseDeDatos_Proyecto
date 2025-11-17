@@ -144,7 +144,46 @@ un costo del 10%.
  Esto sugiere que el procedimiento almacenado aprovecha mejor la 
  optimización del motor SQL y reutiliza planes de ejecución, 
  resultando más eficiente globalmente. 
+ 
+------------------------------------------------------------------------
 
+## 4.2. Pruebas de Eliminación y Modificación
+
+Se realizaron pruebas con los procedimientos:
+
+**spEliminar_Alumno:** se utilizo para eliminar 5 alumnos
+``` sql
+EXEC spEliminar_Alumno 40000001
+EXEC spEliminar_Alumno 40000003
+EXEC spEliminar_Alumno 40000005
+EXEC spEliminar_Alumno 40000007
+EXEC spEliminar_Alumno 40000009
+```
+**resultado:** se borraron exitosamente los registros de los alumnos
+
+**spModificar_Alumno:** se utilizo para modificar distintos datos de 
+5 alumnos
+
+``` sql
+EXEC spModificar_Alumno 40000002, @nombre = 'Carlos'
+EXEC spModificar_Alumno 40000004, @apellido = 'Rodriguez'
+EXEC spModificar_Alumno 40000006, @email = 'autos_845@hotmail.com'
+EXEC spModificar_Alumno 40000008, @pass = 'Contraseña0000008'
+EXEC spModificar_Alumno 40000010, @nombre = 'Juan', @apellido = 'Perez', @email = 'juan_pe@hotmail.com', @pass = 'Contra10'
+```
+**resultado:** se modificaron exitosamente solo los datos modificados para
+los primeros cuatro casos y todos los campos modificables para el 
+último caso
+
+Por último se intento tanto eliminar como modificar los datos de un 
+alumno que ya se habia eliminado
+
+``` sql
+EXEC spEliminar_Alumno 40000001
+EXEC spModificar_Alumno 40000001
+```
+**resultado:** no hubo cambios en la tabla y se mostro en la pestaña
+de mensajes "no existe alumno con ese dni"
 
 ------------------------------------------------------------------------
 
