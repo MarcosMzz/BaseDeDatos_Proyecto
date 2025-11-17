@@ -38,19 +38,25 @@ Consultas que requieren lógica reutilizable
 ## 2.3. Diferencias Entre Procedimientos y Funciones
 
 **Retorno de valores:**
+
 Procedimientos: pueden devolver o no un valor.
 
 Funciones: siempre deben retornar un valor.
 
+
 **Uso en consultas:**
+
 Procedimientos: no pueden utilizarse dentro de un SELECT.
 
 Funciones: sí pueden ser llamadas en un SELECT, WHERE u otras expresiones.
 
+
 **Modificación de datos:**
+
 Procedimientos: pueden realizar operaciones INSERT, UPDATE y DELETE.
 
 Funciones: no pueden modificar datos; solo realizar cálculos o consultas.
+
 
 **Complejidad y propósito:**
 Procedimientos: se usan para tareas completas y lógicas de negocio.
