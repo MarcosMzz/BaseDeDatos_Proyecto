@@ -34,8 +34,8 @@
    3.2. [Herramientas utilizadas](#herramientas-utilizadas)  
 4. [Capítulo IV: Desarrollo del tema / Resultados](#capítulo-iv-desarrollo-del-tema--resultados)  
    4.1. [Modelo entidad-relación](#modelo-entidad-relación)  
-   4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)
-   4.3 [Presentación de temas](#presentación-de-temas)
+   4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)  
+   4.3. [Presentación de temas](#presentación-de-temas)
 6. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)  
 7. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)  
 
