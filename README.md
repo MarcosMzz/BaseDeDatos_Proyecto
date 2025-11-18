@@ -129,6 +129,8 @@ El esquema contempla las siguientes relaciones clave:
 El modelo asegura la integridad referencial mediante claves primarias y foráneas, y ofrece una visión clara de
 la trayectoria académica del estudiante desde su ingreso a una carrera hasta la aprobación de sus exámenes.
 
+## Presentación de temas
+
 ### Procedimientos almacenados
 
 Se desarrollaron procedimientos para:
@@ -142,8 +144,6 @@ Se desarrollaron procedimientos para:
 Las pruebas CRUD demostraron diferencias claras en rendimiento entre
 inserción directa y mediante SPs, mostrando mayor eficiencia al
 reutilizar planes de ejecución.
-
-## Presentación de temas
 
 ### Funciones almacenadas
 
