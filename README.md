@@ -35,6 +35,7 @@
 4. [Capítulo IV: Desarrollo del tema / Resultados](#capítulo-iv-desarrollo-del-tema--resultados)  
    4.1. [Modelo entidad-relación](#modelo-entidad-relación)  
    4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)
+   4.3 [Presentación de temas](#presentación-de-temas)
 6. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)  
 7. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)  
 
@@ -128,7 +129,7 @@ El esquema contempla las siguientes relaciones clave:
 El modelo asegura la integridad referencial mediante claves primarias y foráneas, y ofrece una visión clara de
 la trayectoria académica del estudiante desde su ingreso a una carrera hasta la aprobación de sus exámenes.
 
-### 1. Procedimientos almacenados
+### Procedimientos almacenados
 
 Se desarrollaron procedimientos para:
 
@@ -142,7 +143,9 @@ Las pruebas CRUD demostraron diferencias claras en rendimiento entre
 inserción directa y mediante SPs, mostrando mayor eficiencia al
 reutilizar planes de ejecución.
 
-### 2. Funciones almacenadas
+## Presentación de temas
+
+### Funciones almacenadas
 
 Se implementaron funciones para:
 
@@ -153,7 +156,7 @@ Se implementaron funciones para:
 Las funciones demostraron ser útiles para lógica de consulta
 reutilizable y cálculos derivados.
 
-### 3. Inserción masiva
+### Inserción masiva
 
 Se cargaron 20.000 registros divididos en inserción directa y por
 procedimientos, evidenciando:
@@ -161,7 +164,7 @@ procedimientos, evidenciando:
 -   90% costo relativo en inserciones directas\
 -   10% costo relativo mediante SPs
 
-### 4. Índices
+### Índices
 
 Se realizaron pruebas con:
 
@@ -175,7 +178,7 @@ Se observó:
 -   Eliminación de Table Scans\
 -   Mayor uso de Index Seek
 
-### 5. Triggers
+### Triggers
 
 Se implementaron dos tipos:
 
