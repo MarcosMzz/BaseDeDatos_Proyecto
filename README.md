@@ -138,7 +138,7 @@ Se desarrollaron procedimientos para:
 -   Insertar alumnos
 -   Modificar alumnos
 -   Eliminar alumnos
--   Implementar lógica de negocio centralizada\
+-   Implementar lógica de negocio centralizada
 -   Mejorar seguridad y reutilización del código
 
 Las pruebas CRUD demostraron diferencias claras en rendimiento entre
