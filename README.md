@@ -98,20 +98,20 @@ El desarrollo se llevó a cabo siguiendo un enfoque incremental,
 aplicando principios de trabajo colaborativo. Las principales
 actividades fueron:
 
--   Relevamiento de requerimientos\
--   Modelado inicial en ERD Plus\
+-   Relevamiento de requerimientos
+-   Modelado inicial en ERD Plus
 -   Normalización y validación del esquema\
--   Implementación en SQL Server\
+-   Implementación en SQL Server
 -   Pruebas CRUD, procedimientos, funciones e índices\
 -   Documentación final del proceso
 
 ## Herramientas utilizadas
 
--   **ERD Plus:** para la elaboración del modelo entidad-relación\
--   **SQL Server Management Studio (SSMS):** para implementar y probar
-    la base de datos\
+-   **ERD Plus:** para la elaboración del modelo entidad-relación
+-   **SQL Server Management Studio:** para implementar y probar
+    la base de datos
 -   **WhatsApp:** como herramienta principal para la comunicación del
-    equipo, coordinación de tareas y resolución rápida de dudas\
+    equipo, coordinación de tareas y resolución rápida de dudas
 -   **GitHub:** para respaldo y control de versiones del
     proyecto
 ________________________________________
@@ -135,9 +135,9 @@ la trayectoria académica del estudiante desde su ingreso a una carrera hasta la
 
 Se desarrollaron procedimientos para:
 
--   Insertar alumnos\
--   Modificar alumnos\
--   Eliminar alumnos\
+-   Insertar alumnos
+-   Modificar alumnos
+-   Eliminar alumnos
 -   Implementar lógica de negocio centralizada\
 -   Mejorar seguridad y reutilización del código
 
@@ -149,33 +149,25 @@ reutilizar planes de ejecución.
 
 Se implementaron funciones para:
 
--   Obtener nombre completo del alumno\
--   Obtener estado de inscripción a carrera\
+-   Obtener nombre completo del alumno
+-   Obtener estado de inscripción a carrera
 -   Calcular promedio de notas
 
 Las funciones demostraron ser útiles para lógica de consulta
 reutilizable y cálculos derivados.
 
-### Inserción masiva
-
-Se cargaron 20.000 registros divididos en inserción directa y por
-procedimientos, evidenciando:
-
--   90% costo relativo en inserciones directas\
--   10% costo relativo mediante SPs
-
 ### Índices
 
 Se realizaron pruebas con:
 
--   Índice agrupado\
--   Índices no agrupados con INCLUDE\
+-   Índice agrupado
+-   Índices no agrupados con INCLUDE
 -   Índices múltiples
 
 Se observó:
 
--   Reducción significativa de tiempos\
--   Eliminación de Table Scans\
+-   Reducción significativa de tiempos
+-   Eliminación de Table Scans
 -   Mayor uso de Index Seek
 
 ### Triggers
@@ -188,8 +180,8 @@ Se implementaron dos tipos:
 
 Resultados:
 
--   Incremento en trazabilidad\
--   Prevención de operaciones críticas\
+-   Incremento en trazabilidad
+-   Prevención de operaciones críticas
 -   Aseguramiento de integridad histórica
 ________________________________________
 # CAPÍTULO V: CONCLUSIONES
@@ -207,9 +199,9 @@ académica de manera coherente y trazable.
 
 Las pruebas demostraron que el uso adecuado de:
 
--   Procedimientos almacenados\
--   Funciones\
--   Índices\
+-   Procedimientos almacenados
+-   Funciones
+-   Índices
 -   Triggers
 
 mejora de manera notable la eficiencia del sistema, reduciendo tiempos y
