@@ -28,7 +28,7 @@
    1.3. [Objetivo general](#objetivo-general)  
    1.4. [Objetivos específicos](#objetivos-específicos)  
    1.5. [Alcance](#alcance)  
-2. [Capítulo II: Marco conceptual o referencial](#capítulo-ii-marco-conceptual-o-referencial)  
+2. [Capítulo II: Marco conceptual o referencial](#capitulo-ii-marco-conceptual-o-referencial)  
 3. [Capítulo III: Metodología](#capítulo-iii-metodología)  
    3.1. [Descripción del proceso](#descripción-del-proceso)  
    3.2. [Herramientas utilizadas](#herramientas-utilizadas)  
@@ -41,7 +41,7 @@
 
  
 
-## CAPÍTULO I: INTRODUCCIÓN
+# CAPÍTULO I: INTRODUCCIÓN
 ### Tema
 El proyecto aborda el diseño e implementación de una base de datos académica denominada gestAcad, orientada a centralizar la información vinculada a los alumnos de una institución educativa.
 El foco está en organizar y digitalizar los procesos relacionados con inscripciones a carreras, materias, comisiones y exámenes, así como el registro de calificaciones y estados académicos.
@@ -79,7 +79,7 @@ No incluye otros módulos administrativos ni de gestión institucional, centrán
 
 ________________________________________
 
-## CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
+# CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
 Marco conceptual
 Este proyecto responde a la necesidad de organizar y centralizar la información académica de los alumnos, asegurando procesos más claros y eficientes en las instituciones educativas.
 La base de datos busca:
@@ -115,7 +115,7 @@ actividades fueron:
 -   **GitHub:** para respaldo y control de versiones del
     proyecto
 ________________________________________
-## CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
+# CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 ### Modelo entidad-relación
 A partir del modelado realizado, se diseñó la base de datos de gestAcad, estructurada en torno al alumno como entidad principal.
 El esquema contempla las siguientes relaciones clave:
