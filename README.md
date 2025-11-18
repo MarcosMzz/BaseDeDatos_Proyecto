@@ -34,9 +34,9 @@
    3.2. [Herramientas utilizadas](#herramientas-utilizadas)  
 4. [Capítulo IV: Desarrollo del tema / Resultados](#capítulo-iv-desarrollo-del-tema--resultados)  
    4.1. [Modelo entidad-relación](#modelo-entidad-relación)  
-   4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)  
-5. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)  
-6. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)  
+   4.2. [Diagrama de entidad-relación](#diagrama-de-entidad-relación)
+6. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)  
+7. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)  
 
  
 
@@ -71,10 +71,13 @@ Desarrollar e implementar un modelo de base de datos (**gestAcad**) que permita 
 - Garantizar la trazabilidad de la trayectoria académica completa del estudiante.  
 
 ________________________________________
+
 ### Alcance
 El proyecto se limita al modelado y puesta en marcha de una base de datos enfocada en los alumnos.
 No incluye otros módulos administrativos ni de gestión institucional, centrándose únicamente en el núcleo académico: carreras, materias, comisiones, exámenes y estados asociados al alumno.
+
 ________________________________________
+
 ## CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
 Marco conceptual
 Este proyecto responde a la necesidad de organizar y centralizar la información académica de los alumnos, asegurando procesos más claros y eficientes en las instituciones educativas.
@@ -83,21 +86,33 @@ La base de datos busca:
 •	Ofrecer un registro histórico y confiable de la trayectoria del alumno.
 •	Facilitar el análisis académico mediante la información normalizada.
 La implementación de un sistema de este tipo contribuye a la digitalización educativa, simplificando la gestión interna y brindando mayor precisión en la información.
+
 ________________________________________
-## CAPÍTULO III: METODOLOGÍA SEGUIDA
-Metodología
-### Descripción del proceso
-El desarrollo del proyecto se llevó a cabo siguiendo un enfoque ágil, tomando principios de Scrum como base organizativa para dividir el trabajo en etapas.
-Las actividades principales fueron:
-•	Definición del problema y objetivos.
-•	Modelado de la base de datos con ERD Plus.
-•	Normalización de las tablas.
-•	Generación del código SQL para la implementación en SQL Server Management Studio.
-•	Ajustes y validaciones del modelo en función de los requerimientos académicos.
-### Herramientas utilizadas
-•	ERD Plus: construcción del modelo entidad-relación.
-•	SQL Server Management Studio: implementación y pruebas de la base de datos.
-•	Herramientas ofimáticas (Word, Excel): documentación y organización del proyecto.
+
+# CAPÍTULO III: METODOLOGÍA SEGUIDA
+
+## Descripción del proceso
+
+El desarrollo se llevó a cabo siguiendo un enfoque incremental,
+aplicando principios de trabajo colaborativo. Las principales
+actividades fueron:
+
+-   Relevamiento de requerimientos\
+-   Modelado inicial en ERD Plus\
+-   Normalización y validación del esquema\
+-   Implementación en SQL Server\
+-   Pruebas CRUD, procedimientos, funciones e índices\
+-   Documentación final del proceso
+
+## Herramientas utilizadas
+
+-   **ERD Plus:** para la elaboración del modelo entidad-relación\
+-   **SQL Server Management Studio (SSMS):** para implementar y probar
+    la base de datos\
+-   **WhatsApp:** como herramienta principal para la comunicación del
+    equipo, coordinación de tareas y resolución rápida de dudas\
+-   **GitHub:** para respaldo y control de versiones del
+    proyecto
 ________________________________________
 ## CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 ### Modelo entidad-relación
@@ -107,14 +122,118 @@ El esquema contempla las siguientes relaciones clave:
 •	Administración de carreras y materias.
 •	Registro de exámenes con calificaciones y estados académicos.
 •	Asociación de estados a cada proceso académico (activo, regular, aprobado, desaprobado, etc.).
+
 ### Diagrama de entidad-relación
 ![Diagrama DER](Doc/DERGestAcadNuevo.png)
 El modelo asegura la integridad referencial mediante claves primarias y foráneas, y ofrece una visión clara de
 la trayectoria académica del estudiante desde su ingreso a una carrera hasta la aprobación de sus exámenes.
+
+### 1. Procedimientos almacenados
+
+Se desarrollaron procedimientos para:
+
+-   Insertar alumnos\
+-   Modificar alumnos\
+-   Eliminar alumnos\
+-   Implementar lógica de negocio centralizada\
+-   Mejorar seguridad y reutilización del código
+
+Las pruebas CRUD demostraron diferencias claras en rendimiento entre
+inserción directa y mediante SPs, mostrando mayor eficiencia al
+reutilizar planes de ejecución.
+
+### 2. Funciones almacenadas
+
+Se implementaron funciones para:
+
+-   Obtener nombre completo del alumno\
+-   Obtener estado de inscripción a carrera\
+-   Calcular promedio de notas
+
+Las funciones demostraron ser útiles para lógica de consulta
+reutilizable y cálculos derivados.
+
+### 3. Inserción masiva
+
+Se cargaron 20.000 registros divididos en inserción directa y por
+procedimientos, evidenciando:
+
+-   90% costo relativo en inserciones directas\
+-   10% costo relativo mediante SPs
+
+### 4. Índices
+
+Se realizaron pruebas con:
+
+-   Índice agrupado\
+-   Índices no agrupados con INCLUDE\
+-   Índices múltiples
+
+Se observó:
+
+-   Reducción significativa de tiempos\
+-   Eliminación de Table Scans\
+-   Mayor uso de Index Seek
+
+### 5. Triggers
+
+Se implementaron dos tipos:
+
+-   **Trigger AFTER** para auditoría de modificaciones y eliminaciones
+    en alumnos\
+-   **Trigger INSTEAD OF** para vetar la eliminación de materias
+
+Resultados:
+
+-   Incremento en trazabilidad\
+-   Prevención de operaciones críticas\
+-   Aseguramiento de integridad histórica
 ________________________________________
-## CAPÍTULO V: CONCLUSIONES 
-El proyecto gestAcad permitió diseñar e implementar una base de datos sólida y normalizada, capaz de centralizar toda la información académica de los alumnos.
-Con este enfoque, se resolvieron problemas asociados a la dispersión y falta de confiabilidad de los registros, logrando un sistema estructurado que refleja de manera precisa la trayectoria académica de cada estudiante.
+# CAPÍTULO V: CONCLUSIONES
+
+El proyecto GestAcad permitió desarrollar una base de datos académica
+robusta, normalizada y completamente funcional. A partir del trabajo
+realizado se concluye que:
+
+###  Centralización y organización
+
+La base de datos permite almacenar y relacionar toda la información
+académica de manera coherente y trazable.
+
+###  Optimización y rendimiento
+
+Las pruebas demostraron que el uso adecuado de:
+
+-   Procedimientos almacenados\
+-   Funciones\
+-   Índices\
+-   Triggers
+
+mejora de manera notable la eficiencia del sistema, reduciendo tiempos y
+evitando operaciones costosas.
+
+### Integridad y seguridad
+
+Los triggers implementados fortalecen la integridad referencial y
+agregan auditoría interna, lo cual es esencial para un sistema
+académico.
+
+### Escalabilidad
+
+El modelo está preparado para ampliarse a módulos administrativos o
+sistemas externos sin comprometer su estructura.
+
+### Trabajo colaborativo
+
+El uso de herramientas como WhatsApp y Github favoreció la coordinación
+del equipo y permitió resolver problemas de forma rápida.
+
+### Conclusión final
+
+GestAcad constituye una solución completamentemente funcional que
+integra modelado, implementación y optimización avanzada de bases de
+datos, demostrando la importancia de aplicar buenas prácticas de diseño
+y programación en entornos académicos reales.
 
 ________________________________________
 ## VI: Bibliografía
