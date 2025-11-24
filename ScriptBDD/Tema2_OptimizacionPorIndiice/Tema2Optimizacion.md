@@ -55,9 +55,10 @@ Insertar o actualizar datos puede requerir reorganizar físicamente las páginas
 No es recomendable en columnas con valores repetidos o que cambian con frecuencia.
 
 Codigo SQL para crear indice el indice:
-
-    CREATE CLUSTERED INDEX idx_pruebas_fecha_agrupado
-    ON Examen_Prueba(fecha);
+```sql
+CREATE CLUSTERED INDEX idx_pruebas_fecha_agrupado
+ON Examen_Prueba(fecha);
+```
 
 Con este índice, la tabla Examen_Prueba se organiza físicamente según la columna fecha, optimizando las búsquedas que filtran por periodos de tiempo.
 
@@ -83,11 +84,11 @@ Puede necesitar un paso adicional de búsqueda (lookup) para acceder a los datos
 Su mantenimiento implica más consumo de CPU e I/O al modificar la tabla.
 
 Codigo SQL utilizado para crear el indice
-
-    CREATE NONCLUSTERED INDEX idx_pruebas_fecha_noagrupado
-    ON Examen_Prueba(fecha)
-    INCLUDE (id_materia);
-    
+```sql
+CREATE NONCLUSTERED INDEX idx_pruebas_fecha_noagrupado
+ON Examen_Prueba(fecha)
+INCLUDE (id_materia);
+```
 En este caso, el índice no agrupado utiliza fecha como clave principal e incluye id_materia para cubrir las consultas que requieren ambas columnas, reduciendo el acceso directo a la tabla base.
 
 ### Otros tipos de índices:
