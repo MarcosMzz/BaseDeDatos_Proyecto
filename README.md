@@ -162,7 +162,6 @@ Se realizaron pruebas con:
 
 -   Índice agrupado
 -   Índices no agrupados con INCLUDE
--   Índices múltiples
 
 Se observó:
 
