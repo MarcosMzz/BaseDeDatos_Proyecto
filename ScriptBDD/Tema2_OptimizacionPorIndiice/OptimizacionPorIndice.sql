@@ -69,7 +69,7 @@ WITH (
 );
 GO
 
-BULK INSERT dbo.v_examen_oficial_bulk
+BULK INSERT dbo..v_examen_bulk
 FROM 'C:\datos\examenes_prueba.csv'
 WITH (
     FIRSTROW = 2, 
