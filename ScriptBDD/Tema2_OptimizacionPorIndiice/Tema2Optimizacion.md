@@ -38,15 +38,15 @@ En este trabajo se analiza el impacto que tienen los índices en el rendimiento 
 Un índice agrupado define el orden físico en el que se almacenan las filas de una tabla según una o más columnas. Solo puede existir uno por tabla, ya que únicamente se puede ordenar físicamente de una manera.
 Al crear un índice agrupado sobre una columna, los datos se reordenan físicamente siguiendo los valores de dicha columna. Esto permite que, cuando se ejecuta una consulta por rangos (por ejemplo, entre fechas), el motor acceda directamente al punto inicial y lea secuencialmente las filas correspondientes, evitando un recorrido completo de la tabla.
 
-Ventajas:
+**Ventajas:**
 
 Mejora considerablemente el rendimiento de consultas que filtran por rangos.
 
-Reduce la cantidad de lecturas necesarias (menos I/O).
+Reduce la cantidad de lecturas necesarias.
 
 Aprovecha el orden físico de la tabla.
 
-Desventajas:
+**Desventajas:**
 
 Solo puede haber uno por tabla.
 
@@ -54,10 +54,10 @@ Insertar o actualizar datos puede requerir reorganizar físicamente las páginas
 
 No es recomendable en columnas con valores repetidos o que cambian con frecuencia.
 
-Coodigo SQL para crear indice el indice
+Codigo SQL para crear indice el indice:
 
-CREATE CLUSTERED INDEX idx_pruebas_fecha_agrupado
-ON Examen_Prueba(fecha);
+    CREATE CLUSTERED INDEX idx_pruebas_fecha_agrupado
+    ON Examen_Prueba(fecha);
 
 Con este índice, la tabla Examen_Prueba se organiza físicamente según la columna fecha, optimizando las búsquedas que filtran por periodos de tiempo.
 
@@ -66,7 +66,7 @@ Con este índice, la tabla Examen_Prueba se organiza físicamente según la colu
 A diferencia del agrupado, el índice no agrupado no altera el orden físico de la tabla. Es una estructura independiente que contiene los valores de las columnas del índice junto con punteros a las filas reales de la tabla.
 Una tabla puede tener varios índices no agrupados, lo que permite optimizar consultas específicas que utilicen distintas columnas en sus condiciones.
 
-Ventajas:
+**Ventajas:**
 
 Permite crear varios índices por tabla.
 
@@ -74,7 +74,7 @@ Mejora el rendimiento de consultas que no pueden beneficiarse del índice agrupa
 
 Es posible usar la cláusula INCLUDE para agregar columnas adicionales y cubrir completamente la consulta, evitando acceder a la tabla base.
 
-Desventajas:
+**Desventajas:**
 
 Requiere espacio adicional.
 
@@ -83,33 +83,34 @@ Puede necesitar un paso adicional de búsqueda (lookup) para acceder a los datos
 Su mantenimiento implica más consumo de CPU e I/O al modificar la tabla.
 
 Codigo SQL utilizado para crear el indice
-CREATE NONCLUSTERED INDEX idx_pruebas_fecha_noagrupado
-ON Examen_Prueba(fecha)
-INCLUDE (id_materia);
 
+    CREATE NONCLUSTERED INDEX idx_pruebas_fecha_noagrupado
+    ON Examen_Prueba(fecha)
+    INCLUDE (id_materia);
+    
 En este caso, el índice no agrupado utiliza fecha como clave principal e incluye id_materia para cubrir las consultas que requieren ambas columnas, reduciendo el acceso directo a la tabla base.
 
-### Otros tipos de índices;
+### Otros tipos de índices:
 
-Índices únicos: garantizan que no existan valores duplicados en la columna o combinación de columnas especificadas. Son útiles cuando una columna debe tener valores distintos, como por ejemplo un número de documento o un correo electrónico.
+**Índices únicos:** garantizan que no existan valores duplicados en la columna o combinación de columnas especificadas. Son útiles cuando una columna debe tener valores distintos, como por ejemplo un número de documento o un correo electrónico.
 
-Índices compuestos: combinan dos o más columnas como clave, mejorando el rendimiento en consultas que filtran o ordenan por más de un campo al mismo tiempo.
+**Índices compuestos:** combinan dos o más columnas como clave, mejorando el rendimiento en consultas que filtran o ordenan por más de un campo al mismo tiempo.
 
-Índices filtrados: se crean sobre un subconjunto de filas que cumplen una condición específica. Son ideales cuando solo se necesita indexar una parte de la tabla (por ejemplo, registros activos o no nulos).
+**Índices filtrados:** se crean sobre un subconjunto de filas que cumplen una condición específica. Son ideales cuando solo se necesita indexar una parte de la tabla (por ejemplo, registros activos o no nulos).
 
-Índices en columnas calculadas: permiten indexar el resultado de una expresión o función, haciendo más rápidas las consultas que dependen de cálculos derivados.
+**Índices en columnas calculadas:** permiten indexar el resultado de una expresión o función, haciendo más rápidas las consultas que dependen de cálculos derivados.
 
-Índices columnstore: almacenan los datos por columnas en lugar de filas, lo que los hace especialmente eficientes para consultas analíticas o de lectura intensiva en grandes volúmenes de datos (OLAP).
+**Índices columnstore:** almacenan los datos por columnas en lugar de filas, lo que los hace especialmente eficientes para consultas analíticas o de lectura intensiva en grandes volúmenes de datos (OLAP).
 
-Índices hash: se utilizan en tablas optimizadas para memoria, permitiendo búsquedas extremadamente rápidas en valores exactos.
+**Índices hash:** se utilizan en tablas optimizadas para memoria, permitiendo búsquedas extremadamente rápidas en valores exactos.
 
-Índices no agrupados optimizados para memoria: también se aplican a tablas en memoria, pero almacenan referencias a las filas en estructuras tipo árbol, siendo útiles para búsquedas por rangos.
+**Índices no agrupados optimizados para memoria:** también se aplican a tablas en memoria, pero almacenan referencias a las filas en estructuras tipo árbol, siendo útiles para búsquedas por rangos.
 
-Índices espaciales: diseñados para trabajar con datos geográficos o espaciales, como coordenadas, polígonos o rutas.
+**Índices espaciales:** diseñados para trabajar con datos geográficos o espaciales, como coordenadas, polígonos o rutas.
 
-Índices XML: permiten optimizar las consultas sobre columnas que almacenan datos en formato XML, mejorando la navegación dentro del contenido estructurado.
+**Índices XML:** permiten optimizar las consultas sobre columnas que almacenan datos en formato XML, mejorando la navegación dentro del contenido estructurado.
 
-Índices de texto completo: se utilizan para realizar búsquedas eficientes dentro de textos largos, como descripciones o documentos, permitiendo localizar palabras o frases específicas dentro del contenido textual.
+**Índices de texto completo:** se utilizan para realizar búsquedas eficientes dentro de textos largos, como descripciones o documentos, permitiendo localizar palabras o frases específicas dentro del contenido textual.
 
 ## Resultados de las pruebas
 
