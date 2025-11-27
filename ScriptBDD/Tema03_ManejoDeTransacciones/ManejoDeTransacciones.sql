@@ -104,10 +104,20 @@ END CATCH
 
 GO
 -- Verificación después de la ejecución exitosa
-SELECT nombre, apellido, dni FROM alumnos WHERE dni = 12345000; -- No deberia haber ni un registro
-SELECT * FROM estados WHERE descripcion = 'Completado Temporal'; -- No deberia haber ni un registro
-SELECT nombre_carrera FROM Carrera WHERE nombre_carrera = 'Fallo de transaccion'; -- No deberia haber ni un registro
-SELECT nombre_carrera FROM Carrera WHERE nombre_carrera = 'Ingeniería en Sistemas'; -- Deberia haber un registro
+SELECT nombre, apellido, dni FROM alumnos WHERE dni = 12345000; -- Deberia haber un registro
+SELECT * FROM estados WHERE descripcion = 'Completado Temporal'; -- Deberia haber un registro
+SELECT nombre_carrera FROM Carrera WHERE nombre_carrera = 'Fallo de transaccion'; -- Deberia haberun registro
+SELECT nombre_carrera FROM Carrera WHERE nombre_carrera = 'Ingeniería en Sistemas'; -- No deberia haber ni un registro
+
+-- Limpieza de datos
+
+DELETE FROM alumnos WHERE dni = 12345000;
+DELETE FROM estados WHERE descripcion = 'Completado Temporal';
+DELETE FROM Carrera WHERE nombre_carrera = 'Fallo de transaccion';
+UPDATE Carrera
+    SET nombre_carrera = 'Ingeniería en Sistemas'
+WHERE nombre_carrera = 'Fallo de transaccion';
+
 
 
 
